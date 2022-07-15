@@ -42,28 +42,20 @@
 
                 </x-slot>
 
-                <a href="/" class="flex px-2
-                    py-1 hover:bg-blue-500
-                    hover:text-white
-                    focus:bg-blue-500 focus:text-white w-full rounded-t-xl">
+             <x-dropdown-item href="/" :active='request()->routeIs("home")'>
                     All
-                </a>
-
+             </x-dropdown-item>
 
 
                 @foreach($categories as $category)
-
-                    <a href="/category/{{$category->slug}}" class="flex px-2
-                    py-1 hover:bg-blue-500
-                    hover:text-white
-                    focus:bg-blue-500 focus:text-white w-full
-                    {{$loop->last ? 'rounded-b-xl': ''}}
-                    {{isset($currentCategory) && $currentCategory->name == $category->name ? 'bg-blue-500 text-white' : '' }}
-                        ">
+                    <x-dropdown-item href="/category/{{$category->slug}}"
+                                     :active='request()->routes()'
+                                     :active='request()->is("category/{$category->slug}")'>
                         {{ ucwords($category->name) }}
-                    </a>
+                    </x-dropdown-item>
 
                 @endforeach
+
             </x-dropdown>
 
             </div>

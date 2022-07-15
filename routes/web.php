@@ -20,9 +20,8 @@ Route::get('/', function () {
     return view('posts', [
         'posts' => Post::latest()->get(),
         'categories' =>Category::all(),
-
-    ]);
-});
+     ]);
+})->name('home');
 
 Route::get('/posts/{post}', function (Post $post) {
     return view('post', [
