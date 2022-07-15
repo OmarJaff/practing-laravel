@@ -2,7 +2,7 @@
 
  <article
     class="transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl
- {{$iteration > 2 ? 'col-span-2' : 'col-span-3'}}">
+ {{$iteration < 3 ? 'col-span-3' : 'col-span-2'}}">
     <div class="py-6 px-5">
         <div>
             <img src="/images/illustration-1.png" alt="Blog Post illustration" class="rounded-xl">

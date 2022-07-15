@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('posts', [
-        'posts' => Post::latest()
+        'posts' => Post::latest()->get(),
+        'categories' =>Category::all(),
     ]);
 });
 
@@ -31,7 +32,9 @@ Route::get('/posts/{post}', function (Post $post) {
 
 Route::get('/category/{category:slug}', function (Category $category) {
     return view('posts', [
-        'posts' => $category->posts
+        'posts' => $category->posts,
+        'categories' => Category::all(),
+        'currentCategory' => $category
     ]);
 });
 
