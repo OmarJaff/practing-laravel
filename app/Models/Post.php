@@ -11,6 +11,23 @@ class Post extends Model
 
     protected $guarded = ['id'];
     protected $with = ['category', 'author'];
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, fn($query, $search) => $query
+        ->where('name', 'like', '%' .$search. '%')
+        ->orWhere('body','like', '%' . $search . '%')->orWhere('excerpt', 'like', '%' .$search.'%'));
+
+        
+        //this is another option less cleaner
+//        if($filters['search'] ?? false) {
+//           $query->where('name', 'like', '%' .request('search'). '%')
+//                  ->orWhere('body', 'like', '%' .request('search'). '%')
+//                    ->orWhere('excerpt', 'like', '%' .request('search'). '%');
+//        }
+
+    }
+
     public function getRouteKeyName()
     {
         return 'slug';
