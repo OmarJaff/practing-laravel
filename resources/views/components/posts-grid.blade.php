@@ -10,7 +10,9 @@
             <x-post-card :post="$post" :iteration="$loop->iteration"></x-post-card>
         @endforeach
 
+
     </div>
+    {{$posts->links()}}
 @else
     <h1>No more posts yet, stay toned!</h1>
 @endif
