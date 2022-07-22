@@ -19,10 +19,14 @@ class Post extends Model
             ->where('name', 'like', '%' . $search . '%')
             ->orWhere('body', 'like', '%' . $search . '%')->orWhere('excerpt', 'like', '%' . $search . '%'));
 
+
         $query->when($filters['category'] ?? false, fn($query, $category) => $query
                ->whereHas('category', fn($query) => $query->where('slug', $category)
         )
         );
+
+        $query->when($filters['author']?? false, fn($query, $auther) => $query
+            ->whereHas('author', fn($query) => $query->where('slug', $auther)));
 
         //this is another option less cleaner
 
