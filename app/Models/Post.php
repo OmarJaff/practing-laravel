@@ -26,8 +26,8 @@ class Post extends Model
         )
         );
 
-        $query->when($filters['author']?? false, fn($query, $auther) => $query
-            ->whereHas('author', fn($query) => $query->where('slug', $auther)));
+        $query->when($filters['author']?? false, fn($query, $author) => $query
+            ->whereHas('author', fn($query) => $query->where('name', $author)));
 
         //this is another option less cleaner
 
