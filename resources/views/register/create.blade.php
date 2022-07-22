@@ -13,6 +13,9 @@
                      <input class="w-full p-2 border border-gray-400 rounded"
                             type="text" name="name"
                        required>
+                 @error('name')
+                 <p class="text-red-500">{{$message}}</p>
+                 @enderror
              </div>
 
              <div class="mb-6">
@@ -23,6 +26,9 @@
                  <input class="w-full p-2 border border-gray-400 rounded"
                         type="text" name="username"
                         required>
+                 @error('username')
+                 <p class="text-red-500">{{$message}}</p>
+                 @enderror
              </div>
 
              <div class="mb-6">
@@ -33,6 +39,9 @@
                  <input class="w-full p-2 border border-gray-400 rounded"
                         type="email" name="email"
                         required>
+                 @error('email')
+                 <p class="text-red-500">{{$message}}</p>
+                 @enderror
              </div>
 
              <div class="mb-6">
@@ -43,6 +52,9 @@
                  <input class="w-full p-2 border border-gray-400 rounded"
                         type="password" name="password"
                         required>
+                 @error('password')
+                 <p class="text-red-500">{{$message}}</p>
+                 @enderror
              </div>
 
                 <button type="submit" class="py-2 px-4 bg-blue-500 text-white rounded">
