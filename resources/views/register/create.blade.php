@@ -11,7 +11,7 @@
                             Name
                      </label>
                      <input class="w-full p-2 border border-gray-400 rounded"
-                            type="text" name="name"
+                            type="text" value="{{old('name')}}" name="name"
                        required>
                  @error('name')
                  <p class="text-red-500">{{$message}}</p>
@@ -25,7 +25,7 @@
                  </label>
                  <input class="w-full p-2 border border-gray-400 rounded"
                         type="text" name="username"
-                        required>
+                        required value="{{old('username')}}">
                  @error('username')
                  <p class="text-red-500">{{$message}}</p>
                  @enderror
@@ -37,7 +37,7 @@
                      Email Address
                  </label>
                  <input class="w-full p-2 border border-gray-400 rounded"
-                        type="email" name="email"
+                        type="email" name="email" value="{{old('email')}}"
                         required>
                  @error('email')
                  <p class="text-red-500">{{$message}}</p>
@@ -50,7 +50,7 @@
                      Password
                  </label>
                  <input class="w-full p-2 border border-gray-400 rounded"
-                        type="password" name="password"
+                        type="password" name="password" value="{{old('password')}}"
                         required>
                  @error('password')
                  <p class="text-red-500">{{$message}}</p>
