@@ -15,11 +15,17 @@
             </a>
         </div>
 
-        <div class="mt-8 md:mt-0">
+        <div class="mt-8 md:mt-0 flex space-x-3 items-center">
             @auth
-                <span>Welcome Back {{ auth()->user()->name }} !</span>
+                <span>Welcome Back {{ auth()->user()->name }}!</span>
+                <form action="/logout" method="POST">
+                    @csrf
+                    <button>log out</button>
+                </form>
             @else
             <a href="/register" class="text-xs font-bold uppercase">Register</a>
+                <a href="/login" class="text-xs font-bold uppercase">Log in</a>
+
             @endauth
             <a href="#" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                 Subscribe for Updates
