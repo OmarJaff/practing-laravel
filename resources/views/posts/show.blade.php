@@ -50,6 +50,11 @@
                    </p>
                 </div>
             </div>
+            <section class="col-span-12 my-10 space-y-6">
+                <x-comment></x-comment>
+                <x-comment></x-comment>
+                <x-comment></x-comment>
+            </section>
         </article>
     </main>
 
