@@ -15,6 +15,8 @@ Route::get('/', [PostController::class, 'index'] )->name('home');
 
 Route::get('/posts/{post}', [PostController::class, 'show']);
 
+Route::post('/posts/{post}/comments', [CommentController::class, 'store']);
+
 Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
 
 Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
@@ -25,4 +27,3 @@ Route::get('/login', [SessionController::class, 'create'])->middleware('guest');
 
 Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
 
-Route::Post('/posts/{psot}/comments', [CommentController::class, 'store'])->middleware('auth');
