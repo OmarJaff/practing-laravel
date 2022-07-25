@@ -9,6 +9,6 @@
             <h3 class="font-bold">{{$comment->author->name}}</h3>
             <p class="text-xs">Posted <time>{{$comment->created_at->diffForHumans()}} </time></p>
         </header>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus eaque similique soluta vel! Aliquam architecto aspernatur atque ex excepturi, fuga hic illum iusto nihil omnis, porro quos sapiente tempora totam?</p>
+        <p>{{$comment->body}}</p>
     </div>
 </article>
