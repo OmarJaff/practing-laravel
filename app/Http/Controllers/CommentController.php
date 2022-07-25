@@ -20,4 +20,9 @@ class CommentController extends Controller
 
         return back();
     }
+
+    public function destroy(Post $post)
+    {
+        dd($post->comments('id')->get('id'));
+    }
 }
