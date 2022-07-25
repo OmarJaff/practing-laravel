@@ -61,11 +61,14 @@
                         <p>Want to participate?</p>
                     </div>
                     <div>
-                        <textarea name="body" placeholder="participate and share your views!" class="focus:none focus:ring w-full rounded  my-4 pl-2" cols="30" rows="5"></textarea>
+                        <textarea name="body" required placeholder="participate and share your views!" class="focus:none focus:ring w-full rounded  my-4 pl-2" cols="30" rows="5"></textarea>
                     </div>
                     <div class="flex justify-end">
                         <button class="text-white bg-blue-500 py-2 px-5 rounded-full">Post</button>
                     </div>
+                    @error('body')
+                    <span class="text-red-500 text-sm">{{$message}}</span>
+                    @enderror
                 </div>
                 </form>
                 @else
