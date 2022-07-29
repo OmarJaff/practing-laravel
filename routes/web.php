@@ -9,8 +9,11 @@ use App\Models\Post;
 use App\Models\User;
  use Illuminate\Support\Facades\Route;
 
-Route::get('ping', function () {
+Route::post('newsletter/member/add', function () {
 
+    request()->validate([
+        'email' => 'required|email'
+    ]);
 
     $mailchimp = new \MailchimpMarketing\ApiClient();
 
@@ -19,8 +22,18 @@ Route::get('ping', function () {
         'server' => 'us13'
     ]);
 
-    $response = $mailchimp->ping->get();
-    ddd($response);
+    try {
+        $response = $mailchimp->lists->addListMember('30298d469a', [
+            "email_address" => request('email'),
+            "status" => "subscribed"
+        ]);
+    } catch (\Exception $e) {
+        throw \Illuminate\Validation\ValidationException::withMessages([
+            'email' => 'Your email could not be added to the news letter list.'
+            ]
+        );
+    }
+    return redirect('/')->with('Success');
 });
 
 
