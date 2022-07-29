@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\Mailchimp;
 use App\Services\Newsletter;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -27,7 +28,7 @@ class NewsletterContrller extends Controller
 
         } catch (\Exception $e) {
             throw ValidationException::withMessages([
-                    'email' => "$e"
+                    'email' => "Message could not be delievered!"
                 ]
             );
         }
