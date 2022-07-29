@@ -33,7 +33,7 @@ Route::post('newsletter/member/add', function () {
             ]
         );
     }
-    return redirect('/')->with('Success');
+    return redirect('/')->with('message', 'Successfully subscribed!');
 });
 
 
