@@ -21,7 +21,7 @@ class Newsletter
     {
         $mailchimp = new ApiClient();
 
-        $mailchimp->setConfig([
+       return $mailchimp->setConfig([
             'apiKey' => config('services.mailchimp.key'),
             'server' => 'us13'
         ]);
