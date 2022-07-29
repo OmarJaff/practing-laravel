@@ -20,7 +20,7 @@
 
 
         <div x-show="show" class=" flex absolute shadow-sm top-8 rounded py-2 px-4 bg-white text-sm">
-            <form method="POST" action="/posts/{{$comment->post->slug}}/comments/{{$comment->id}}/remove">
+            <form method="POST" action="/posts/{{$comment->post->slug}}/comments/remove/{{$comment->id}}">
                 @csrf
                 <button>Delete Comment</button>
             </form>

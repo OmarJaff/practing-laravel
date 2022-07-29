@@ -23,6 +23,12 @@ class CommentController extends Controller
 
     public function destroy(Post $post)
     {
-        dd($post->comments('id')->get('id'));
+
+        $comment = $post->comments->find(request('id')) ?? false;
+
+        $comment?->delete();
+
+        return redirect()->back();
+
     }
 }

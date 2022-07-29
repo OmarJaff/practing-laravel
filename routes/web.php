@@ -17,7 +17,7 @@ Route::get('/posts/{post}', [PostController::class, 'show']);
 
 Route::post('/posts/{post}/comments', [CommentController::class, 'store']);
 
-Route::post('/posts/{post}/comments/{id}/remove', [CommentController::class, 'destroy']);
+Route::post('/posts/{post}/comments/remove/{id}', [CommentController::class, 'destroy']);
 
 Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
 
