@@ -9,32 +9,7 @@ use App\Models\Post;
 use App\Models\User;
  use Illuminate\Support\Facades\Route;
 
-Route::post('newsletter/member/add', function () {
-
-    request()->validate([
-        'email' => 'required|email'
-    ]);
-
-    $mailchimp = new \MailchimpMarketing\ApiClient();
-
-    $mailchimp->setConfig([
-        'apiKey' => config('services.mailchimp.key'),
-        'server' => 'us13'
-    ]);
-
-    try {
-        $response = $mailchimp->lists->addListMember('30298d469a', [
-            "email_address" => request('email'),
-            "status" => "subscribed"
-        ]);
-    } catch (\Exception $e) {
-        throw \Illuminate\Validation\ValidationException::withMessages([
-            'email' => 'Your email could not be added to the news letter list.'
-            ]
-        );
-    }
-    return redirect('/')->with('message', 'Successfully subscribed!');
-});
+Route::post('newsletter/member/add', [\App\Http\Controllers\NewslestterController::class, 'store'] );
 
 
 Route::get('/', [PostController::class, 'index'] )->name('home');
