@@ -19,11 +19,24 @@
         </svg>
 
 
-        <div x-show="show" class=" flex absolute shadow-sm top-8 rounded py-2 px-4 bg-white text-sm">
-            <form method="POST" action="/posts/{{$comment->post->slug}}/comments/remove/{{$comment->id}}">
-                @csrf
-                <button>Delete Comment</button>
-            </form>
+        <div x-show="show" class="absolute shadow-sm top-8 rounded bg-white text-sm">
+            <ul>
+                {{--To Do--}}
+                <li class="hover:bg-gray-200 p-2 cursor-pointer">
+                    <form method="POST" action="/posts/{{$comment->post->slug}}/comments/edit/{{$comment->id}}">
+                        @csrf
+                        <button>Edit</button>
+                    </form>
+                </li>
+                <li class="hover:bg-gray-200 p-2 cursor-pointer">
+                    <form method="POST" action="/posts/{{$comment->post->slug}}/comments/remove/{{$comment->id}}">
+                        @csrf
+                        <button>Delete Comment</button>
+                    </form>
+                </li>
+            </ul>
+
+
         </div>
     </div>
     @endif

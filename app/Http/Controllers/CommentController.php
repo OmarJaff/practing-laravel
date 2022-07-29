@@ -21,6 +21,11 @@ class CommentController extends Controller
         return back();
     }
 
+    public function update(Post $post)
+    {
+
+    }
+
     public function destroy(Post $post)
     {
 
