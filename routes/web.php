@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\NewsletterContrller;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
@@ -9,7 +10,6 @@ use App\Models\Post;
 use App\Models\User;
  use Illuminate\Support\Facades\Route;
 
-Route::post('newsletter/member/add', [\App\Http\Controllers\NewslestterController::class, 'store'] );
 
 
 Route::get('/', [PostController::class, 'index'] )->name('home');
@@ -30,3 +30,4 @@ Route::get('/login', [SessionController::class, 'create'])->middleware('guest');
 
 Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
 
+Route::post('/newsletter/member/add', NewsletterContrller::class );
