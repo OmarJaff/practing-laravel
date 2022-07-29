@@ -23,8 +23,6 @@ class NewsletterContrller extends Controller
 
         try {
 
-            $newsletter = new Newsletter();
-
             $newsletter->subscribe(request('email'));
 
         } catch (\Exception $e) {
