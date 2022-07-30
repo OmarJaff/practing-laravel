@@ -38,4 +38,4 @@ Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth'
 
 Route::post('/newsletter/member/add', NewsletterContrller::class );
 
-Route::get('/admin/post/create', [PostController::class, 'create']);
+Route::get('/admin/post/create', [PostController::class, 'create'])->middleware('admin');
