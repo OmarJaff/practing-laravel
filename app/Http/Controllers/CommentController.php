@@ -23,6 +23,17 @@ class CommentController extends Controller
 
     public function update(Post $post)
     {
+        $attribute = request()->validate([
+            'body' => 'required|string'
+        ]);
+
+        $comment = $post->comments()->find(\request('id')) ?? false;
+
+        $comment->body = \request('body');
+
+        $comment->update();
+
+        return redirect()->back()->with('message', 'Your comment updated successfully');
 
     }
 

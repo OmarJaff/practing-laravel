@@ -20,14 +20,22 @@ Route::post('/posts/{post}/comments', [CommentController::class, 'store']);
 
 Route::post('/posts/{post}/comments/remove/{id}', [CommentController::class, 'destroy']);
 
-Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
+Route::post('/posts/{post}/comments/update/{id}', [CommentController::class, 'update']);
 
-Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
+Route::middleware('guest')->group(function () {
+
+    Route::get('/register', [RegisterController::class, 'create']);
+
+    Route::post('/register', [RegisterController::class, 'store']);
+
+    Route::get('/login', [SessionController::class, 'create']);
+
+    Route::post('/login', [SessionController::class, 'store']);
+
+});
 
 Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');
 
-Route::get('/login', [SessionController::class, 'create'])->middleware('guest');
-
-Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
-
 Route::post('/newsletter/member/add', NewsletterContrller::class );
+
+Route::get('/admin/post/create', [PostController::class, 'create']);
