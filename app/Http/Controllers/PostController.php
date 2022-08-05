@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
@@ -32,6 +34,21 @@ class PostController extends Controller
 
     public function store()
     {
-        ddd( \request()->all());
+
+         $attributes = \request()->validate([
+             'title' => 'required',
+             'slug' =>['required', Rule::unique('posts', 'slug')],
+             'excerpt' => 'required',
+             'body' => 'required',
+             'thumbnail' => 'required|image',
+             'category_id' =>['required', Rule::exists('categories','id')]
+         ]);
+
+
+          $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnail');
+
+          auth()->user()->posts()->create($attributes);
+
+         return redirect('/');
     }
 }

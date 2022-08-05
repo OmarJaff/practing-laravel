@@ -5,7 +5,7 @@
  {{$iteration < 3 ? 'col-span-3' : 'col-span-2'}}">
     <div class="py-6 px-5">
         <div>
-            <img src="/images/illustration-1.png" alt="Blog Post illustration" class="rounded-xl">
+            <img src="{{asset('storage/'.$post->thumbnail)}}" alt="Blog Post illustration" class="rounded-xl">
         </div>
 
 
@@ -17,7 +17,7 @@
 
                 <div class="mt-4">
                     <h1 class="text-3xl">
-                         {{$post->name}}
+                         {{$post->title}}
                     </h1>
 
                     <span class="mt-2 block text-gray-400 text-xs">

@@ -21,8 +21,9 @@ class PostFactory extends Factory
         return [
             'user_id' => User::factory(),
             'category_id' => Category::factory(),
-            'name' => fake()->name,
+            'title' => fake()->name,
             'slug' => fake()->slug,
+            'thumbnail' => fake()->filePath(),
             'excerpt' => fake()->realText(400),
             'body' => fake()->text
         ];
