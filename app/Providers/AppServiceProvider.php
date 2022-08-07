@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use App\Services\Mailchimp;
 use App\Services\Newsletter;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Support\ServiceProvider;
 use MailchimpMarketing\ApiClient;
 
@@ -37,6 +39,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-    }
+
+        \Illuminate\Support\Facades\Gate::define('admin', function (User $user)
+        {
+            return $user -> username === 'omarjaff95';
+        });
+
+     }
 }

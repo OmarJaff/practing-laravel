@@ -8,7 +8,7 @@
                 <p class="mt-2 text-sm text-gray-700">A list of all the posts in your blog.</p>
             </div>
             <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                <a href="/admin/posts/create" type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Add Post</a>
+                <a href="/admin/posts/create" type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-blue-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Add Post</a>
             </div>
         </div>
         <div class="mt-8 flex flex-col">
@@ -22,9 +22,13 @@
                             <tr>
                                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$post->title}}</td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$post->slug}}</td>
-                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6 space-x-2">
-                                    <a href="/admin/posts/{{$post->slug}}/edit" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                     <a href="#" class=" text-sm text-gray-500 hover:text-gray-600">Delete</a>
+                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6 space-x-2 flex">
+                                    <a href="/admin/posts/{{$post->slug}}/edit" class="text-blue-500 hover:text-blue-600">Edit</a>
+                                      <form action="/admin/posts/{{$post->slug}}" method="post">
+                                         @csrf
+                                         @method('delete')
+                                         <button class="text-sm text-gray-500 hover:text-gray-600">Delete</button>
+                                     </form>
                                  </td>
                             </tr>
                             @endforeach

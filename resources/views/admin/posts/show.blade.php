@@ -1,7 +1,8 @@
 
 <x-settings headings="Edit post: {{$post->title}}">
-    <x-form.layout action="/admin/posts" enctype="multipart/form-data">
-
+    <form method="post" action="/admin/posts/{{$post->slug}}" enctype="multipart/form-data">
+        @csrf
+        @method('patch')
         <x-form.input name="title" :value="old('title', $post->title)"></x-form.input>
         <x-form.input name="slug" :value="old('slug', $post->slug)"></x-form.input>
         <x-form.textarea name="body" >
@@ -22,5 +23,5 @@
 
         <x-form.submit>Submit</x-form.submit>
 
-    </x-form.layout>
+    </form>
 </x-settings>

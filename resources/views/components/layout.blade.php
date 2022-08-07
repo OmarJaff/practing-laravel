@@ -28,6 +28,7 @@
                     <x-slot name="trigger">
                         <button>Welcome Back {{ auth()->user()->name }}!</button>
                     </x-slot>
+                    @can('admin')
                     <x-dropdown-item href="/admin/posts">
                         Dashboard
                     </x-dropdown-item>
@@ -36,7 +37,7 @@
                                      :active="request()->is('admin/post/create')">
                         New Post
                     </x-dropdown-item>
-
+                    @endcan
                     <x-dropdown-item href="/admin/post/create" x-data="{}"
                                      @click.prevent="document.querySelector('#logout-form').submit()">
 
